@@ -27,6 +27,9 @@
       <li>https://www.test.co.uk/en/some/old/path.html: the old URL</li>
       <li>https://www.test.co.uk/en/a/new/path.html: the new URL</li>
   </ul>
+  
+  <h3>INSTALLATION GUIDE</h3>
+  
   <p>To make this script work you need to install Python and xlrd library.</p>
   <p>You can download the latest version of Python from those links for <a href="https://www.python.org/downloads/" target="_blank">Windows</a>, <a href="https://www.python.org/downloads/source/" target="_blank">Linux/UNIX</a>, <a href="https://www.python.org/downloads/macos/" target="_blank">MacOS</a>.</p>
   
