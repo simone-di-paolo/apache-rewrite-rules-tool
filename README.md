@@ -27,8 +27,13 @@
       <li>https://www.test.co.uk/en/some/old/path.html: the old URL</li>
       <li>https://www.test.co.uk/en/a/new/path.html: the new URL</li>
   </ul>
-  <p>To make this script work you need to install xlrd library. If you are using .xlsx files, you'll need to install this specific version:</p>
+  <p>To make this script work you need to install Python and xlrd library.</p>
+  <p>You can download the latest version of Python from those links for <a href="https://www.python.org/downloads/" target="_blank">Windows</a>, <a href="https://www.python.org/downloads/source/" target="_blank">Linux/UNIX</a>, <a href="https://www.python.org/downloads/macos/" target="_blank">MacOS</a>.</p>
+  If you are using .xlsx files, you'll need to install this specific version:</p>
   <pre>pip install xlrd==1.2.0</pre>
   <p>Otherwise, if you are using .xls files, then, you'll need to install the latest version:</p>
   <pre>pip install xlrd</pre>
+  <p>Once done, navigate into your folder with cmd/terminal and launch (N.B. use your python version into the next command):</p>
+  <pre>python redirect-tool.py</pre>
+  
 </div>
