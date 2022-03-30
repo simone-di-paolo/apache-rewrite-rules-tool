@@ -16,10 +16,8 @@
 </p>
 <p>An example of the result of each rows inside the rewrited-rules.txt is the following:</p>
 
-<p>
-  # SCTASK1234567 --- https://www.test.co.uk/en/some/old/path.html => https://www.test.co.uk/en/a/new/path.html
-  RewriteRule ^/en/some/old/path.html$ https://%{SERVER_NAME}/en/a/new/path.html? [NC,L,R=301,ENV=REDIRECTCACHE:1]
-</p>
+<pre># SCTASK1234567 --- https://www.test.co.uk/en/some/old/path.html => https://www.test.co.uk/en/a/new/path.html
+RewriteRule ^/en/some/old/path.html$ https://%{SERVER_NAME}/en/a/new/path.html? [NC,L,R=301,ENV=REDIRECTCACHE:1]</pre>
 
 <p>Where the first line is a comment that shows:</p>
   <ul>
