@@ -1,12 +1,14 @@
-import xlrd  #pip install xlrd
+import xlrd  # pip install xlrd
 
 startFromWhichRow = 1   # in case the first row has no rules but only column titles put 1 otherwise 0
 sheetNumber = 0  # the index of the excel sheet you want to process, if doOnlyOneSheet is False it will do them all starting from this index
 doOnlyOneSheet = False  # if for any reason you need to do one file at a time put this to True (capital T)
 serviceTaskID = "SCTASK1234567"  # number of the Jira Service Task that is inserted in the line of the comments
 redirectType = "301"  # can be 301 or 302, your choice
+rewriteRulesFlags = ["NC", "L", "R="+redirectType, "ENV=REDIRECTCACHE:1"]  # add all the redirect flags you need
 
-path = 'W:\\Example\\Local\\Folder\\\\myExcelFileWithRules.xlsx'    # peth of the file to read
+#path = 'W:\\Example\\Local\\Folder\\\\myExcelFileWithRules.xlsx'    # path of the file to read
+path = 'W:\\Developing\\Git\\Repository\\Python\\assets\\WhittingtonEraclea.xlsx'
 excel_file_path = xlrd.open_workbook(path)
 excel_sheet = excel_file_path.sheet_by_index(sheetNumber)
 
@@ -17,11 +19,19 @@ excel_sheet = excel_file_path.sheet_by_index(sheetNumber)
 commentBeforeRewriteRule = "# " + serviceTaskID + " --- "
 rewriteRule = "RewriteRule ^/"
 
-file = open("W:\\Example\\Local\\Folder\\rewrited-rules.txt", "w")  # path of the file to write to
-
+#file = open("W:\\Example\\Local\\Folder\\rewrited-rules.txt", "w")  # path of the file to write to
+file = open('W:\\Developing\\Git\\Repository\\Python\\assets\\rewrited-rules.txt', "w")
 file.write("#################### SHEET NUMBER " + str(sheetNumber+1) + " - "
            + excel_file_path.sheet_by_index(sheetNumber).name
            + " #################### \n\n")
+
+# creating the string with redirect flags that we will attach to the RedirectRules below
+flagsToString = "["
+for i in range(len(rewriteRulesFlags)):
+    if rewriteRulesFlags[i] != rewriteRulesFlags[-1]:
+        flagsToString += rewriteRulesFlags[i] + ","
+    else:
+        flagsToString += rewriteRulesFlags[i] + "]"
 
 for worksheets in excel_file_path.sheet_names():
     excel_sheet = excel_file_path.sheet_by_index(sheetNumber)
@@ -55,7 +65,7 @@ for worksheets in excel_file_path.sheet_names():
             if i != len(urlToSplitted)-1:
                 rewriteRule += urlToSplitted[i] + "/"
             else:
-                rewriteRule += urlToSplitted[i] + "? [NC,L,R=" + redirectType + ",ENV=REDIRECTCACHE:1]"
+                rewriteRule += urlToSplitted[i] + "? " + flagsToString
 
         file.write(commentBeforeRewriteRule + "\n")
         file.write(rewriteRule + "\n\n")
