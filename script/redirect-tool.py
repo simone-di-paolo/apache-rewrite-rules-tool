@@ -7,8 +7,8 @@ serviceTaskID = "SCTASK1234567"  # number of the Jira Service Task that is inser
 redirectType = "301"  # can be 301 or 302, your choice
 rewriteRulesFlags = ["NC", "L", "R="+redirectType, "ENV=REDIRECTCACHE:1"]  # add all the redirect flags you need
 
-path = 'W:\\Example\\Local\\Folder\\myExcelFileWithRules.xlsx'    # path of the file to read
-excel_file_path = xlrd.open_workbook(path)
+pathFileToRead = 'W:\\Example\\Local\\Folder\\myExcelFileWithRules.xlsx'    # path of the file to read
+excel_file_path = xlrd.open_workbook(pathFileToRead)
 excel_sheet = excel_file_path.sheet_by_index(sheetNumber)
 
 # example of a RewriteRule with a comment on the line before
@@ -18,8 +18,8 @@ excel_sheet = excel_file_path.sheet_by_index(sheetNumber)
 commentBeforeRewriteRule = "# " + serviceTaskID + " --- "
 rewriteRule = "RewriteRule ^/"
 
-file = open("W:\\Example\\Local\\Folder\\rewrited-rules.txt", "w")  # path of the file to write to
-file.write("#################### SHEET NUMBER " + str(sheetNumber+1) + " - "
+pathFileToWrite = open("W:\\Example\\Local\\Folder\\rewrited-rules.txt", "w")  # path of the file to write to
+pathFileToWrite.write("#################### SHEET NUMBER " + str(sheetNumber+1) + " - "
            + excel_file_path.sheet_by_index(sheetNumber).name
            + " #################### \n\n")
 
@@ -65,8 +65,8 @@ for worksheets in excel_file_path.sheet_names():
             else:
                 rewriteRule += urlToSplitted[i] + "? " + flagsToString
 
-        file.write(commentBeforeRewriteRule + "\n")
-        file.write(rewriteRule + "\n\n")
+        pathFileToWrite.write(commentBeforeRewriteRule + "\n")
+        pathFileToWrite.write(rewriteRule + "\n\n")
 
     # if you want to do only one sheet at a time interrupts the "for" here
     if doOnlyOneSheet:
@@ -75,8 +75,8 @@ for worksheets in excel_file_path.sheet_names():
     # otherwise, increments the index by the page number and moves to the next sheet until the end of the file
     if sheetNumber < len(excel_file_path.sheet_names())-1:
         sheetNumber += 1
-        file.write("\n\n #################### SHEET NUMBER " + str(sheetNumber+1) + " - "
+        pathFileToWrite.write("\n\n #################### SHEET NUMBER " + str(sheetNumber+1) + " - "
                    + excel_file_path.sheet_by_index(sheetNumber).name
                    + " #################### \n\n")
 
-file.close()
+pathFileToWrite.close()
