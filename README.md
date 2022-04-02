@@ -20,12 +20,26 @@
 RewriteRule ^/en/some/old/path.html$ https://%{SERVER_NAME}/en/a/new/path.html? [NC,L,R=301,ENV=REDIRECTCACHE:1]</pre>
 
 <p>Where the first line is a comment that shows:</p>
-  <ul>
-      <li><b>SCTASK1234567:</b> it's the number of the Service Task (from Jira). You can leave it blank if you want</li>
-      <li>https://www.test.co.uk/en/some/old/path.html: the old URL</li>
-      <li>https://www.test.co.uk/en/a/new/path.html: the new URL</li>
+<ul>
+  <li><b>SCTASK1234567:</b> it's the number of the Service Task (from Jira). You can leave it blank if you want</li>
+  <li><b>https://www.test.co.uk/en/some/old/path.html:</b> the old URL</li>
+  <li><b>https://www.test.co.uk/en/a/new/path.html:</b> the new URL</li>
+</ul>
+<p>The second link is created this way: </p>
+<ul>
+  <li><b>RewriteRule:</b> it's the beginning of the RewriteRule</li>
+  <li><b>^/en/some/old/path.html:</b> it's the old path starting from the language from the old URL</li>
+  <li><b>https://%{SERVER_NAME}/en/a/new/path.html:</b> it's the page where the user will be redirected from the old path</li>
+  <li><b>https://%{SERVER_NAME}/en/a/new/path.html:</b> it's the page where the user will be redirected from the old path</li>
+  <li><b>[NC,L,R=301,ENV=REDIRECTCACHE:1]:</b> those are redirect rules flags</li>
+    <ul>
+      <li><b>NC:</b> thise flag causes the RewriteRule to be matched in a case-insensitive manner</li>
+      <li><b>L:</b> this flag, in most contexts, means that if the rule matches, no further rules will be processed.</li>
+      <li><b>R=301:</b> it's the redirect type, 301 or 302 (choose wisely)</li>
+      <li><b>ENV=REDIRECTCACHE:1:</b> With the [E], or [env] flag, you can set the value of an environment variable (in this case REDIRECTCACHE with value 1). </li>
+    </ul>
   </ul>
-  
+  <i>Official documentation about flags: https://httpd.apache.org/docs/2.4/rewrite/flags.html</i>
   <h3>INSTALLATION GUIDE</h3>
   
   <p>To make this script work you need to install Python and xlrd library.</p>
