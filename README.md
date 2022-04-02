@@ -30,7 +30,6 @@ RewriteRule ^/en/some/old/path.html$ https://%{SERVER_NAME}/en/a/new/path.html? 
   <li><b>RewriteRule:</b> it's the beginning of the RewriteRule</li>
   <li><b>^/en/some/old/path.html:</b> it's the old path starting from the language from the old URL</li>
   <li><b>https://%{SERVER_NAME}/en/a/new/path.html:</b> it's the page where the user will be redirected from the old path</li>
-  <li><b>https://%{SERVER_NAME}/en/a/new/path.html:</b> it's the page where the user will be redirected from the old path</li>
   <li><b>[NC,L,R=301,ENV=REDIRECTCACHE:1]:</b> those are redirect rules flags</li>
     <ul>
       <li><b>NC:</b> thise flag causes the RewriteRule to be matched in a case-insensitive manner</li>
