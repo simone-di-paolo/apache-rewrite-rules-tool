@@ -39,6 +39,19 @@ RewriteRule ^/en/some/old/path.html$ https://%{SERVER_NAME}/en/a/new/path.html? 
     </ul>
   </ul>
   <i>Official documentation about flags: https://httpd.apache.org/docs/2.4/rewrite/flags.html</i>
+  
+  <h3>SETTING UP VARIABLES</h3>
+  
+  <p>Open the script with an editor like Notepad++ and edit the following variables as you prefer:
+  <ul>
+    <li><b>startFromWhichRow = 1</b>  # in case the first row of your Excel file has no rules but only column titles put 1, otherwise 0</li>
+    <li><b>sheetNumber = 0</b>  # the index of the excel sheet you want to process, if doOnlyOneSheet is False it will do them all starting from this index</li>
+    <li><b>doOnlyOneSheet = False</b>  # if for any reason you need to do one file sheet at a time put this to True (with capital T letter)</li>
+    <li><b>serviceTaskID = "SCTASK1234567"</b>  # number of the Jira Service Task that is inserted in the line of the comments (if neededm otherwise leave it blank)</li>
+    <li><b>redirectType = "301"</b>  # can be 301 or 302, your choice</li>
+    <li><b>rewriteRulesFlags = ["NC", "L", "R="+redirectType, "ENV=REDIRECTCACHE:1"]</b>  # add all the redirect flags you need into this arrays of strings</li>
+  </ul>
+  
   <h3>INSTALLATION GUIDE</h3>
   
   <p>To make this script work you need to install Python and xlrd library.</p>
