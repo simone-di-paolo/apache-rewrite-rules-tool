@@ -7,8 +7,7 @@ serviceTaskID = "SCTASK1234567"  # number of the Jira Service Task that is inser
 redirectType = "301"  # can be 301 or 302, your choice
 rewriteRulesFlags = ["NC", "L", "R="+redirectType, "ENV=REDIRECTCACHE:1"]  # add all the redirect flags you need
 
-#path = 'W:\\Example\\Local\\Folder\\\\myExcelFileWithRules.xlsx'    # path of the file to read
-path = 'W:\\Developing\\Git\\Repository\\Python\\assets\\WhittingtonEraclea.xlsx'
+path = 'W:\\Example\\Local\\Folder\\myExcelFileWithRules.xlsx'    # path of the file to read
 excel_file_path = xlrd.open_workbook(path)
 excel_sheet = excel_file_path.sheet_by_index(sheetNumber)
 
@@ -19,8 +18,7 @@ excel_sheet = excel_file_path.sheet_by_index(sheetNumber)
 commentBeforeRewriteRule = "# " + serviceTaskID + " --- "
 rewriteRule = "RewriteRule ^/"
 
-#file = open("W:\\Example\\Local\\Folder\\rewrited-rules.txt", "w")  # path of the file to write to
-file = open('W:\\Developing\\Git\\Repository\\Python\\assets\\rewrited-rules.txt', "w")
+file = open("W:\\Example\\Local\\Folder\\rewrited-rules.txt", "w")  # path of the file to write to
 file.write("#################### SHEET NUMBER " + str(sheetNumber+1) + " - "
            + excel_file_path.sheet_by_index(sheetNumber).name
            + " #################### \n\n")
