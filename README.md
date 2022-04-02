@@ -52,6 +52,8 @@ RewriteRule ^/en/some/old/path.html$ https://%{SERVER_NAME}/en/a/new/path.html? 
     <li><b>rewriteRulesFlags = ["NC", "L", "R="+redirectType, "ENV=REDIRECTCACHE:1"]</b>  # add all the redirect flags you need into this arrays of strings</li>
   </ul>
   
+  <p><b>N.B.</b> REMEMBER TO CHANGE ADD CORRECT PATHS TO THE FILES THAT YOU'LL READ AND WRITE!</p>
+  
   <h3>INSTALLATION GUIDE</h3>
   
   <p>To make this script work you need to install Python and xlrd library.</p>
