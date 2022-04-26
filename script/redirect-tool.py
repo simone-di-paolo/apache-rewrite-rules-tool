@@ -40,10 +40,12 @@ for worksheets in excel_file_path.sheet_names():
 
         # row/column of the old URL
         urlFrom = excel_sheet.cell_value(row, 0)
+        urlFrom = urlFrom.strip()
         urlFromSplitted = urlFrom.split("/")
 
         # row/column of the new
         urlTo = excel_sheet.cell_value(row, 1)
+        urlTo = urlTo.strip()
         urlToSplitted = urlTo.split("/")
 
         # It is the comment of the line before the rewrite rule with the number of Service Task (if needed)
